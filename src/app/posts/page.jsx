@@ -1,11 +1,6 @@
-// const getData = async () => {
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-//   const data = await res.json();
-//   return data;
-
+import Link from "next/link";
 import { getData } from "../services/postApi";
 
-// };
 const postPage = async () => {
   const postDatas = await getData();
   return (
@@ -16,6 +11,9 @@ const postPage = async () => {
           <div key={post.id} className="border-2 border-red-400 p-2 ">
             <h6 key={post}>{post.title}</h6>
             <h6>{post.body}</h6>
+            <button className="bg-red-400 px-4 py-2 rounded-lg">
+              <Link href={`/posts/${post.id}`}>view Details</Link>
+            </button>
           </div>
         ))}
       </div>
